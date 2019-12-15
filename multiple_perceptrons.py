@@ -29,10 +29,12 @@ class MultiplePerceptrons:
 		#Train the NN based on the amount of epochs
 		for i in range(self.epochs):
 			for data in training_data:
-				for perceptron in self.perceptrons:
+				for index, perceptron in enumerate(self.perceptrons):
 					#Find the max value node 
 					prediction = self.predict(data["data"])
-					if prediction == data["answer"]:
+
+					#If this perceptron was the predicted value AND if it is the correct digit
+					if prediction == data["answer"] and prediction == index:
 						perceptron.learn(None, error=1)
 					else:
 						perceptron.learn(None, error=0)
