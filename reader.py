@@ -14,18 +14,20 @@ class Reader:
 		#Case where we are using 32x32
 		if "32" in self.filename:
 			with open(self.filename) as f: 
-				temp_string = ""
+				temp_list = []
 				for line in f:
 					if line[0] == ' ':
-						temp_dict = {"data": temp_string, "answer": int(line[1])}
+
+						temp_dict = {"data": temp_list, "answer": int(line[1])}
 						self.data.append(temp_dict)
-						temp_string = ""
+						temp_list = []
 					else:
-						temp_string += line.strip()
+						temp_list += [int(i) for i in line.strip()]
 
 
 def main():
 	test = Reader("digit-recognition-examples/32x32-bitmaps/optdigits-32x32.tes")
 	test2 = Reader("digit-recognition-examples/8x8-integer-inputs/optdigits-8x8-int.tes")
-	print(test.data)
+	#print(test.data)
 
+#main()
