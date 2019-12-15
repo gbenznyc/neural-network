@@ -24,6 +24,9 @@ class Reader:
 					else:
 						temp_list += [int(i) for i in line.strip()]
 
+	def return_data(self):
+		return self.data
+
 
 def main():
 	test = Reader("digit-recognition-examples/32x32-bitmaps/optdigits-32x32.tes")
