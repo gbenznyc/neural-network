@@ -35,9 +35,9 @@ class MultiplePerceptrons:
 
 					#If this perceptron was the predicted value AND if it is the correct digit
 					if prediction == data["answer"] and prediction == index:
-						perceptron.learn(None, error=1)
+						perceptron.learn(data, error=0)
 					else:
-						perceptron.learn(None, error=0)
+						perceptron.learn(data, error=1)
 
 
 		

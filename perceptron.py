@@ -58,7 +58,7 @@ class Perceptron:
 			self.weights[0] += error * self.learning_rate
 
 			#Update the weight of all other inputs
-			self.weights[1:] += error * self.learning_rate * np.asarray(data["data"])
+			self.weights[1:] += error * self.learning_rate * np.asarray(training_data["data"])
 
 
 def main():
