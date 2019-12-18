@@ -9,7 +9,7 @@ class Perceptron:
 
 		#Initialize weights, we add one to the input_nodes
 		#to account for the extra bias node we will be including
-		self.weights = np.random.uniform(low=-0.15, high=0.15, size=(input_nodes + 1,))
+		self.weights = np.random.uniform(low=-1.0, high=1.0, size=(input_nodes + 1,))
 
 	def activation_function(self, x):
 		#We will be using a sigmoid function as our activation_function
@@ -58,7 +58,7 @@ class Perceptron:
 			return self.activation_function(weighted_sum)
 
 
-	def learn(self, training_data, output, error = 0):
+	def learn(self, training_data, output=0, error = 0):
 		#Iterate through amount of epochs individually
 		if self.one_output:
 			for i in range(0, self.epochs):
