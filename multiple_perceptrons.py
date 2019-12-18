@@ -32,12 +32,9 @@ class MultiplePerceptrons:
 				for index, perceptron in enumerate(self.perceptrons):
 					#Find the max value node 
 					prediction = self.predict(data["data"])
+					error = data["answer"] - prediction
 
-					#If this perceptron was the predicted value AND if it is the correct digit
-					if prediction == data["answer"] and prediction == index:
-						perceptron.learn(data, error=0)
-					else:
-						perceptron.learn(data, error=1)
+					perceptron.learn(data, error=error)
 
 
 		

@@ -10,9 +10,10 @@ def main():
 	test_8 = Reader("digit-recognition-examples/8x8-integer-inputs/optdigits-8x8-int.tes").return_data()
 
 	gn = MultiplePerceptrons(64, 0.1, 1)
-	gn.learn(train_8)
+	#gn.learn(train_8)
 	correct = 0
 	for data in test_8:
+		print(gn.predict(data["data"]))
 		if gn.predict(data["data"]) == data["answer"]:
 			correct += 1
 
