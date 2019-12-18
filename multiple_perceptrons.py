@@ -22,6 +22,8 @@ class MultiplePerceptrons:
 
 		#Find the node with the largest prediction value
 		max_index = np.where(numpy_results == np.amax(numpy_results))[0][0]
+		#print("np.amax(numpy_results): ") #debug
+		#print(np.amax(numpy_results)) #debug
 		
 		return max_index, numpy_results
 

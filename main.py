@@ -19,4 +19,17 @@ def main():
 
 	print(correct/len(test_8))
 
+	
+	# nn = Perceptron(1024, 0.1, 10, one_output=True)
+	# nn.learn(train_32)
+	# correct = 0
+	# for data in test_32:
+	# 	#print("data[answer]: ") #debug
+	# 	#print(data["answer"]) #debug
+	# 	print("nn.predict(data[data]): ") #debug
+	# 	print(nn.predict(data["data"])) #debug
+	# 	if nn.predict(data["data"]) == data["answer"]:
+	# 		correct += 1
+
+
 main()

@@ -32,7 +32,27 @@ class Perceptron:
 		if self.one_output:
 			#If we only have one output node multiply value by 10
 			#print(self.activation_function(weighted_sum))
-			return round(self.activation_function(weighted_sum) * 10)
+			sigmoid_val = self.activation_function(weighted_sum)
+			if sigmoid_val <= 0.05:
+				return 0
+			elif sigmoid_val <= 0.15:
+				return 1
+			elif sigmoid_val <= 0.25:
+				return 2
+			elif sigmoid_val <= 0.35:
+				return 3
+			elif sigmoid_val <= 0.45:
+				return 4
+			elif sigmoid_val <= 0.55:
+				return 5
+			elif sigmoid_val <= 0.65:
+				return 6
+			elif sigmoid_val <= 0.75:
+				return 7
+			elif sigmoid_val <= 0.85:
+				return 8
+			else:
+				return 9
 		else:
 			#If we have 10 output nodes, keep the value between 0 and 1
 			return self.activation_function(weighted_sum)
