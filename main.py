@@ -14,7 +14,6 @@ def main():
 	gn.learn(train_8)
 	correct = 0
 	for data in test_8:
-
 		if gn.predict(data["data"])[0] == data["answer"]:
 			correct += 1
 
