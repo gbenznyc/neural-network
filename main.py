@@ -9,8 +9,7 @@ def main():
 	test_32 = Reader("digit-recognition-examples/32x32-bitmaps/optdigits-32x32.tes").return_data()
 	test_8 = Reader("digit-recognition-examples/8x8-integer-inputs/optdigits-8x8-int.tes").return_data()
 
-	"""
-	gn = MultiplePerceptrons(64, 0.1, 5)
+	gn = MultiplePerceptrons(64, 0.1, 25)
 	gn.learn(train_8)
 	correct = 0
 	for data in test_8:

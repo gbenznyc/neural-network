@@ -22,12 +22,10 @@ class MultiplePerceptrons:
 
 		#Find the node with the largest prediction value
 		max_index = np.where(numpy_results == np.amax(numpy_results))[0][0]
-		#print("np.amax(numpy_results): ") #debug
-		#print(np.amax(numpy_results)) #debug
 		
 		return max_index, numpy_results
 
-	def learn(self, training_data):
+	def learn(self, training_data, testing_data):
 		#Train the NN based on the amount of epochs
 		for i in range(self.epochs):
 			print("Currently at epoch: " + str(i))
@@ -36,7 +34,6 @@ class MultiplePerceptrons:
 				prediction, numpy_results = self.predict(data["data"])
 
 				for index, perceptron in enumerate(self.perceptrons):
-					#print(perceptron.weights)
 					output = numpy_results[index]
 					if prediction == index and prediction == data["answer"]:
 						error = 1 - output
@@ -44,4 +41,12 @@ class MultiplePerceptrons:
 						error = 0 - output
 					
 					perceptron.learn(data, output, error=error)
+			
+			#Testing each epoch
+			correct = 0
+			for data in testing_data:
+				if self.predict(data["data"])[0] == data["answer"]:
+					correct += 1
+
+			print(correct/len(testing_data))
 		
