@@ -15,6 +15,10 @@ class Perceptron:
 		#We will be using a sigmoid function as our activation_function
 		return 1 / (1 + np.exp(-x + 0.5))
 
+	def sigmoid_deriviate(self, x):
+		#The deriviate of the sigmoid used to minimze our error when learning
+		return self.activation_function(x)*(1- self.activation_function(x))
+
 	def predict(self, inputs):
 		numpy_inputs = np.asarray(inputs)
 
@@ -34,7 +38,7 @@ class Perceptron:
 			return self.activation_function(weighted_sum)
 
 
-	def learn(self, training_data, error = 0):
+	def learn(self, training_data, output, error = 0):
 		#Iterate through amount of epochs individually
 		if self.one_output:
 			for i in range(0, self.epochs):
@@ -55,10 +59,10 @@ class Perceptron:
 		#If the perceptron is part of a group of others
 		else:
 			#Update the weight of the bias node
-			self.weights[0] += error * self.learning_rate
+			self.weights[0] += error * self.learning_rate * output*(1-output)
 
 			#Update the weight of all other inputs
-			self.weights[1:] += error * self.learning_rate * np.asarray(training_data["data"])
+			self.weights[1:] += error * self.learning_rate * np.asarray(training_data["data"]) * output*(1-output)
 
 
 def main():
