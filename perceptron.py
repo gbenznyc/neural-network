@@ -88,11 +88,10 @@ class Perceptron:
 		#If the perceptron is part of a group of others
 		else:
 			#Update the weight of the bias node
-			self.weights[0] += error * self.learning_rate * output*(1-output)
+			self.weights[0] += error * self.learning_rate 
 
 			#Update the weight of all other inputs
-			self.weights[1:] += error * self.learning_rate * np.asarray(training_data["data"]) * output*(1-output)
-
+			self.weights[1:] += error * self.learning_rate * np.asarray(training_data["data"]) 
 
 def main():
 	test = Perceptron(10, 0, 0, one_output=True)
