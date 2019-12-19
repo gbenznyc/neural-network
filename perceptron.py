@@ -33,48 +33,58 @@ class Perceptron:
 		if self.one_output:
 			#If we only have one output node multiply value by 10
 			sigmoid_val = self.activation_function(weighted_sum)
-			if sigmoid_val <= 0.05:
-				return 0
-			elif sigmoid_val <= 0.15:
-				return 1
-			elif sigmoid_val <= 0.25:
-				return 2
-			elif sigmoid_val <= 0.35:
-				return 3
-			elif sigmoid_val <= 0.45:
-				return 4
-			elif sigmoid_val <= 0.55:
-				return 5
-			elif sigmoid_val <= 0.65:
-				return 6
-			elif sigmoid_val <= 0.75:
-				return 7
-			elif sigmoid_val <= 0.85:
-				return 8
+			if sigmoid_val <= 0.1:
+				return 0, sigmoid_val
+			elif sigmoid_val <= 0.2:
+				return 1, sigmoid_val
+			elif sigmoid_val <= 0.3:
+				return 2, sigmoid_val
+			elif sigmoid_val <= 0.4:
+				return 3, sigmoid_val
+			elif sigmoid_val <= 0.5:
+				return 4, sigmoid_val
+			elif sigmoid_val <= 0.6:
+				return 5, sigmoid_val
+			elif sigmoid_val <= 0.7:
+				return 6, sigmoid_val
+			elif sigmoid_val <= 0.8:
+				return 7, sigmoid_val
+			elif sigmoid_val <= 0.9:
+				return 8, sigmoid_val
 			else:
-				return 9
+				return 9, sigmoid_val
 		else:
 			#If we have 10 output nodes, keep the value between 0 and 1
 			return self.activation_function(weighted_sum)
 
 
-	def learn(self, training_data, output=0, error = 0):
+	def learn(self, training_data, testing_data=None, output=0, error = 0):
 		#Iterate through amount of epochs individually
 		if self.one_output:
 			for i in range(0, self.epochs):
+				print("At epoch " + str(i))
 				for data in training_data:
 					#Predict a result based on some data
-					prediction = self.predict(data["data"])
+					prediction, output = self.predict(data["data"])
+					#print(prediction)
 
 					#Find the difference between the prediction and the actual label
-					#Need to review if this error actually does anything for one output node
-					error = data["answer"] - prediction
+					error = (data["answer"] - (output * 10.0))/10
+
 
 					#Update the weight of the bias node
-					self.weights[0] += error * self.learning_rate
+					self.weights[0] += error * self.learning_rate * output*(1-output)
 
 					#Update the weight of all other inputs
-					self.weights[1:] += error * self.learning_rate * np.asarray(data["data"])
+					self.weights[1:] += error * self.learning_rate * np.asarray(data["data"]) * output*(1-output)
+
+				#Testing each epoch
+				correct = 0
+				for data in testing_data:
+					if self.predict(data["data"])[0] == data["answer"]:
+						correct += 1
+
+				print(correct/len(testing_data))
 		
 		#If the perceptron is part of a group of others
 		else:
