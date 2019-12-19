@@ -9,16 +9,18 @@ def main():
 	test_32 = Reader("digit-recognition-examples/32x32-bitmaps/optdigits-32x32.tes").return_data()
 	test_8 = Reader("digit-recognition-examples/8x8-integer-inputs/optdigits-8x8-int.tes").return_data()
 
-	gn = MultiplePerceptrons(64, 0.1, 25)
-	gn.learn(train_8)
+	
+	gn = MultiplePerceptrons(1024, 0.1, 25)
+	gn.learn(train_32, test_32)
 	correct = 0
-	for data in test_8:
+	for data in test_32:
 		if gn.predict(data["data"])[0] == data["answer"]:
 			correct += 1
 
 	print(correct/len(test_8))
-	"""
 	
+	
+	"""
 	nn = Perceptron(64, 0.1, 10, one_output=True)
 	nn.learn(train_8)
 	correct = 0
@@ -31,6 +33,7 @@ def main():
 	 		correct += 1
 
 	print(float(correct)/len(test_8))
+	"""
 
 
 main()
