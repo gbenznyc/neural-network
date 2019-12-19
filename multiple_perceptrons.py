@@ -51,4 +51,5 @@ class MultiplePerceptrons:
 					correct += 1
 
 			print(correct/len(testing_data))
+
 		
