@@ -22,7 +22,7 @@ class MultiplePerceptrons:
 
 		#Find the node with the largest prediction value
 		max_index = np.where(numpy_results == np.amax(numpy_results))[0][0]
-		
+
 		return max_index, numpy_results
 
 	def learn(self, training_data, testing_data):
@@ -35,6 +35,7 @@ class MultiplePerceptrons:
 
 				for index, perceptron in enumerate(self.perceptrons):
 					output = numpy_results[index]
+					
 					if prediction == index and prediction == data["answer"]:
 						error = 1 - output
 					else:
@@ -46,6 +47,7 @@ class MultiplePerceptrons:
 			correct = 0
 			for data in testing_data:
 				if self.predict(data["data"])[0] == data["answer"]:
+					#print(self.predict(data["data"])[0])
 					correct += 1
 
 			print(correct/len(testing_data))

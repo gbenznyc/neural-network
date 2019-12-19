@@ -9,7 +9,7 @@ class Perceptron:
 
 		#Initialize weights, we add one to the input_nodes
 		#to account for the extra bias node we will be including
-		self.weights = np.random.uniform(low=-1.0, high=1.0, size=(input_nodes + 1,))
+		self.weights = np.random.uniform(low=-0.15, high=0.15, size=(input_nodes + 1,))
 
 	def activation_function(self, x):
 		#We will be using a sigmoid function as our activation_function
@@ -27,11 +27,11 @@ class Perceptron:
 
 		#Calculate the summation of all of the inputs with the weights
 		weighted_sum = np.dot(numpy_inputs, self.weights)
+		#print(weighted_sum)
 
 		#Return the weighted_sum passed through the activation function
 		if self.one_output:
 			#If we only have one output node multiply value by 10
-			#print(self.activation_function(weighted_sum))
 			sigmoid_val = self.activation_function(weighted_sum)
 			if sigmoid_val <= 0.05:
 				return 0
