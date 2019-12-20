@@ -2,7 +2,7 @@
 
 The Python 3.6 code in this project is a neural net that is used for digit identification. Digits are provided to us in two formats. Info can be found on them in the digit-recognition-examples folder in the 32x32-bitmaps folder and the 8x8-integer-inputs folder. Our neural network uses perceptrons to predict what these digits actually are. The specifics of our implementation and the mechanics behind our neural network can be read more about in our lab report.
 
-To run our code one must first ensure they have Python 3.6 installed on there computer. Next the neccesary libraries must be installed in the requirements.txt file. 
+To run our code one must first ensure they have Python 3.6 installed on his/her computer. Next the neccesary libraries must be installed in the requirements.txt file. 
 
 Our neural net can be run be typing '''python3 main.py input_rep output_rep learn_rate'''
 input_rep = size of input representation, must be 8 or 32 (int)
