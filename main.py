@@ -1,4 +1,4 @@
-import sys #test
+import sys
 from perceptron import Perceptron
 from multiple_perceptrons import MultiplePerceptrons
 from reader import Reader
@@ -44,5 +44,6 @@ def main():
 	else:
 		nn.learn(train_32, test_32)
 
+	print("Training finished. 50 epochs completed.")
+
 main()
-print("Training finished. 50 epochs completed.") #test
