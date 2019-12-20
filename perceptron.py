@@ -53,7 +53,7 @@ class Perceptron:
 			return self.activation_function(weighted_sum)
 
 
-	def learn(self, training_data, testing_data=None, output=0, error = 0):
+	def learn(self, training_data, testing_data=None, output=0, error=0):
 		#Iterate through amount of epochs individually
 		if self.one_output:
 			for i in range(0, self.epochs):

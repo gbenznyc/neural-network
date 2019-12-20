@@ -26,11 +26,3 @@ class Reader:
 
 	def return_data(self):
 		return self.data
-
-
-def main():
-	test = Reader("digit-recognition-examples/32x32-bitmaps/optdigits-32x32.tes")
-	test2 = Reader("digit-recognition-examples/8x8-integer-inputs/optdigits-8x8-int.tes")
-	print(test.data[3])
-
-#main()
