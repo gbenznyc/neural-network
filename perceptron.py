@@ -62,6 +62,7 @@ class Perceptron:
 		#Iterate through amount of epochs individually
 		if self.one_output:
 			for i in range(0, self.epochs):
+				#print("Currently at epoch: " + str(i))
 				for data in training_data:
 					#Predict a result based on some data
 					prediction, output = self.predict(data["data"])
@@ -71,10 +72,10 @@ class Perceptron:
 					error = (data["answer"] - (output * 10.0))/10
 
 					#Update the weight of the bias node
-					self.weights[0] += error * self.learning_rate * output*(1-output)
+					self.weights[0] += error * self.learning_rate #* output*(1-output)
 
 					#Update the weight of all other inputs
-					self.weights[1:] += error * self.learning_rate * np.asarray(data["data"]) * output*(1-output)
+					self.weights[1:] += error * self.learning_rate * np.asarray(data["data"]) #* output*(1-output)
 
 				#Testing each epoch
 				correct = 0
