@@ -7,6 +7,6 @@ To run our code one must first ensure they have Python 3.6 installed on there co
 Our neural net can be run be typing '''python3 main.py input_rep output_rep learn_rate'''
 input_rep = size of input representation, must be 8 or 32 (int)
 num_output_nodes = number of output nodes, must be 1 or 10 (int)
-earn_rate = learning rate, recommended 0 < learn_rate <= 1 (double)
+learn_rate = learning rate, recommended 0 < learn_rate <= 1 (double)
 
 As the algorithm runs, the program outputs the proportion of correct digits classified after the end of each epoch.
