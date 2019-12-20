@@ -15,10 +15,6 @@ class Perceptron:
 		#We will be using a sigmoid function as our activation_function
 		return 1 / (1 + np.exp(-x + 0.5))
 
-	def sigmoid_deriviate(self, x):
-		#The deriviate of the sigmoid used to minimze our error when learning
-		return self.activation_function(x)*(1- self.activation_function(x))
-
 	def predict(self, inputs):
 		numpy_inputs = np.asarray(inputs)
 
@@ -27,7 +23,6 @@ class Perceptron:
 
 		#Calculate the summation of all of the inputs with the weights
 		weighted_sum = np.dot(numpy_inputs, self.weights)
-		#print(weighted_sum)
 
 		#Return the weighted_sum passed through the activation function
 		if self.one_output:
@@ -58,30 +53,27 @@ class Perceptron:
 			return self.activation_function(weighted_sum)
 
 
-	def learn(self, training_data, testing_data=None, output=0, error = 0):
+	def learn(self, training_data, testing_data=None, output=0, error=0):
 		#Iterate through amount of epochs individually
 		if self.one_output:
 			for i in range(0, self.epochs):
-				#print("Currently at epoch: " + str(i))
 				for data in training_data:
 					#Predict a result based on some data
 					prediction, output = self.predict(data["data"])
 
 					#Find the difference between the prediction and the actual label
-					#Need to review if this error actually does anything for one output node
 					error = (data["answer"] - (output * 10.0))/10
 
 					#Update the weight of the bias node
-					self.weights[0] += error * self.learning_rate #* output*(1-output)
+					self.weights[0] += error * self.learning_rate
 
 					#Update the weight of all other inputs
-					self.weights[1:] += error * self.learning_rate * np.asarray(data["data"]) #* output*(1-output)
-
+					self.weights[1:] += error * self.learning_rate * np.asarray(data["data"])
+					
 				#Testing each epoch
 				correct = 0
 				for data in testing_data:
 					if self.predict(data["data"])[0] == data["answer"]:
-						#print(self.predict(data["data"])[0])
 						correct += 1
 
 				print(correct/len(testing_data))
@@ -93,9 +85,3 @@ class Perceptron:
 
 			#Update the weight of all other inputs
 			self.weights[1:] += error * self.learning_rate * np.asarray(training_data["data"]) 
-
-def main():
-	test = Perceptron(10, 0, 0, one_output=True)
-	print(test.predict([1,2,3,4,5,6,7,8,9,10]))
-
-#main()

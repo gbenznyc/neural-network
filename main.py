@@ -2,6 +2,12 @@ import sys
 from perceptron import Perceptron
 from multiple_perceptrons import MultiplePerceptrons
 from reader import Reader
+	
+train_32 = Reader("digit-recognition-examples/32x32-bitmaps/optdigits-32x32.tra").return_data()
+train_8 = Reader("digit-recognition-examples/8x8-integer-inputs/optdigits-8x8-int.tra").return_data()
+
+test_32 = Reader("digit-recognition-examples/32x32-bitmaps/optdigits-32x32.tes").return_data()
+test_8 = Reader("digit-recognition-examples/8x8-integer-inputs/optdigits-8x8-int.tes").return_data()
 
 def main():
 	#read in parameters
@@ -24,13 +30,6 @@ def main():
 	if num_output_nodes != 1 and num_output_nodes != 10:
 		print_help()
 		quit()
-
-
-	train_32 = Reader("digit-recognition-examples/32x32-bitmaps/optdigits-32x32.tra").return_data()
-	train_8 = Reader("digit-recognition-examples/8x8-integer-inputs/optdigits-8x8-int.tra").return_data()
-
-	test_32 = Reader("digit-recognition-examples/32x32-bitmaps/optdigits-32x32.tes").return_data()
-	test_8 = Reader("digit-recognition-examples/8x8-integer-inputs/optdigits-8x8-int.tes").return_data()
 
 	num_input_nodes = input_rep ** 2
 
