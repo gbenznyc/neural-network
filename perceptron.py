@@ -71,11 +71,11 @@ class Perceptron:
 					error = (data["answer"] - (output * 10.0))/10
 
 					#Update the weight of the bias node
-					self.weights[0] += error * self.learning_rate * output*(1-output)
+					self.weights[0] += error * self.learning_rate
 
 					#Update the weight of all other inputs
-					self.weights[1:] += error * self.learning_rate * np.asarray(data["data"]) * output*(1-output)
-
+					self.weights[1:] += error * self.learning_rate * np.asarray(data["data"])
+					
 				#Testing each epoch
 				correct = 0
 				for data in testing_data:
