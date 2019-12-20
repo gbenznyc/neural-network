@@ -57,6 +57,7 @@ class Perceptron:
 		#Iterate through amount of epochs individually
 		if self.one_output:
 			for i in range(0, self.epochs):
+				print("Current epoch: " + str(i))
 				for data in training_data:
 					#Predict a result based on some data
 					prediction, output = self.predict(data["data"])
@@ -76,7 +77,7 @@ class Perceptron:
 					if self.predict(data["data"])[0] == data["answer"]:
 						correct += 1
 
-				print(correct/len(testing_data))
+				print("Accuracy: " + str(correct/len(testing_data)))
 		
 		#If the perceptron is part of a group of others
 		else:

@@ -29,6 +29,7 @@ class MultiplePerceptrons:
 	def learn(self, training_data, testing_data):
 		#Train the NN based on the amount of epochs
 		for i in range(self.epochs):
+			print("Current epoch: " + str(i))
 			for data in training_data:
 				#Find the max value node as the prediction
 				prediction, numpy_results = self.predict(data["data"])
@@ -53,6 +54,6 @@ class MultiplePerceptrons:
 				if self.predict(data["data"])[0] == data["answer"]:
 					correct += 1
 
-			print(correct/len(testing_data))
+			print("Accuracy: " + str(correct/len(testing_data)))
 
 		
